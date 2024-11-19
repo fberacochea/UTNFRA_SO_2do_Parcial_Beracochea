@@ -1,0 +1,34 @@
+---
+# tasks file for 2do_parcial
+
+- debug:
+    msg: "Tareas del 2do Parcial"
+
+- name: Crear directorio alumno si no existe
+  ansible.builtin.file:
+    path: /temp/2do_parcial/alumno
+    state: directory
+    mode: '0755'
+
+- name: Crear directorio si no existe
+  ansible.builtin.file:
+    path: /temp/2do_parcial/equipo
+    state: directory
+    mode: '0755'
+
+- name: Crear un archivo datos alumno
+  ansible.builtin.template:
+    src: "templates/archivo1.j2"
+    dest: "/tmp/2do_parcial/alumno/datos_alumno.txt"
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Crear un archivo datos equipo
+  ansible.builtin.template:
+    src: "templates/archivo2.j2"
+    dest: "/tmp/2do_parcial/equipo/datos_equipo.txt"
+    owner: root
+    group: root
+    mode: '0644'
+
